@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Home page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+{% endblock %}
+{% block body %}
+<div class="row" style="margin-top: 5%">
+    <div class="col-md-4 col-lg-4"></div>   
+    <div class="col-md-4 col-lg-4"> 
+        <div class="card">     
+            <div class="card-header">  
+                <h4 class="text-primary">Convert 'Audio' to 'Text'
+                    <span class="badge badge-success">new</span>
+                </h4>
+            </div>
+            <div class="card-body">   
+                <form action="/home" method="POST" enctype="multipart/form-data">
+                    <div class="custom-file">
+                        <label class="custom-file-label" for="file">
+                            <i class="fas fa-file"></i>  Upload wav,mp3 files
+                        </label>   
+                        <input class="custom-file-input" type="file" name="file" id="file">
+                    </div>
+                    <input class="btn btn-info" style="margin-top: 12px;" 
+                    type="submit" value="Convert">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-4 col-lg-4"></div>
+    <div class="col-md-4 col-lg-4">   
+        <div class="btn-group">   
+            <button class="btn btn-warning" data-toggle="collapse" data-target="#demo1">about us</button>
+        </div>
+        <div id="demo1" class="collapse">
+            <p class="text-info">We convert the 'wav' files into text,
+            further planning to directly send the content to mail.</p>
+        </div>
+    </div>
+</div>
+<script>    
+$(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    console.log(fileName);
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+{% endblock %}
