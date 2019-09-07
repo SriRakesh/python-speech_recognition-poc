@@ -15,7 +15,7 @@ def index():
             try:
                 #print("Content " + r.recognize_sphinx(audio))
                 data = r.recognize_google(audio)
-                return render_template('index.html', data=data)
+                return render_template('show.html', data=data)
             except sr.UnknownValueError:
                 print("could not understand audio")
             except sr.RequestError as e:
