@@ -7,7 +7,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
         <li class="nav-link active"> 
-            <button class="btn btn-danger" data-toggle="collapse" data-target="#demo2">BUZZBIZZ</button>
+            <button class="btn btn-danger">BUZZBIZZ</button>
         </li>
     </ul>
 </nav>
@@ -17,16 +17,7 @@
 <div class="row" style="margin-top: 5%">
     <div class="col-md-4 col-lg-4">
         <div id="demo2" class="collapse">
-            <!-- if 'BUZZBIZZ' clicked it shows here -->
         </div>
-        {% if isAlert == True %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong> {{ alert }} </strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endif %}
     </div>   
     <div class="col-md-4 col-lg-4"> 
         <div class="card">     
@@ -43,8 +34,14 @@
                         </label>   
                         <input class="custom-file-input" type="file" name="file" id="file">
                     </div>
-                    <input class="btn btn-info" style="margin-top: 12px;" 
-                    type="submit" value="Convert">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="btn btn-info" style="margin-top: 12px;" 
+                            type="submit" value="Convert" onclick="spin()"> 
+                        </div>
+                        <div id="spinhere" class="col-md-6" style="margin-top: 3%;">  
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -55,12 +52,20 @@
     <div class="col-md-4 col-lg-4"></div>
     <div class="col-md-4 col-lg-4">   
         <div class="btn-group">   
-            <button class="btn btn-warning" data-toggle="collapse" data-target="#demo1">about us</button>
+            <button class="btn btn-warning" data-toggle="collapse" data-target="#demo1" style="margin-bottom: 5%">about us</button>
         </div>
         <div id="demo1" class="collapse">
             <p class="text-info">We convert the 'wav' files into text,
             further planning to directly send the content to mail.</p>
         </div>
+        {% if isAlert == True %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong> {{ alert }} </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
     </div>
 </div>
 <script>    
@@ -69,5 +74,8 @@ $(".custom-file-input").on("change", function() {
     console.log(fileName);
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+function spin(){
+    document.getElementById("spinhere").innerHTML = `<div class="spinner-border text-success"></div>`;
+};
 </script>
 {% endblock %}
