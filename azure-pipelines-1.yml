@@ -31,6 +31,6 @@ steps:
     pip install speechrecognition
   displayName: 'speech_recognition'
 
-- script: |
-    python myapp.py
-  displayName: 'running app'
+# - script: |
+#     python myapp.py
+#   displayName: 'running app'
