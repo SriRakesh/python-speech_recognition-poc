@@ -25,6 +25,13 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+    pip install flask
+  displayName: 'flask'
+
+- script: |
+    pip install speechrecognition
+  displayName: 'speech_recognition'
+
+- script: |
+    python myapp.py
+  displayName: 'running app'
